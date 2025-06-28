@@ -1,0 +1,8 @@
+<section class="hero">
+  <h1>Welcome to Library</h1>
+  <div class="actions">
+    <a *ngFor="let link of links" [routerLink]="link.path" class="button">
+      {{ link.text }}
+    </a>
+  </div>
+</section>

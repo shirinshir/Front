@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  width: 100%;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.button {
+  background: #fff;
+  color: #764ba2;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(118, 75, 162, 0.4);
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #764ba2;
+  color: white;
+  box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+}

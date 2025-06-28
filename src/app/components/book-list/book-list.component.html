@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Books</h2>
+
+  <form (submit)="addBook(); $event.preventDefault()">
+    <input type="text" [(ngModel)]="newBook.name" name="name" placeholder="Book Name" required />
+    <input type="number" [(ngModel)]="newBook.authorId" name="authorId" placeholder="Author ID" required />
+    <input type="number" [(ngModel)]="newBook.publisherId" name="publisherId" placeholder="Publisher ID" required />
+    <input type="number" [(ngModel)]="newBook.readerId" name="readerId" placeholder="Reader ID" />
+    <button type="submit">Add Book</button>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Author ID</th>
+      <th>Publisher ID</th>
+      <th>Reader ID</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books">
+      <ng-container *ngIf="editingBook?.id === book.id; else viewMode">
+        <ng-container *ngIf="editingBook as b">
+          <td>{{ b.id }}</td>
+          <td><input [(ngModel)]="b.name" name="editName{{b.id}}" /></td>
+          <td><input [(ngModel)]="b.authorId" name="editAuthor{{b.id}}" /></td>
+          <td><input [(ngModel)]="b.publisherId" name="editPublisher{{b.id}}" /></td>
+          <td><input [(ngModel)]="b.readerId" name="editReader{{b.id}}" /></td>
+          <td>
+            <button (click)="saveBook()">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+            <button (click)="deleteBook(b.id!)">Delete</button>
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #viewMode>
+        <td>{{ book.id }}</td>
+        <td>{{ book.name }}</td>
+        <td>{{ book.authorId }}</td>
+        <td>{{ book.publisherId }}</td>
+        <td>{{ book.readerId }}</td>
+        <td>
+          <button (click)="editBook(book)">Edit</button>
+          <button (click)="deleteBook(book.id!)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>

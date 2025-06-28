@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Publications</h2>
+
+  <form (submit)="addPublication(); $event.preventDefault()">
+    <input type="text" [(ngModel)]="newPublication.name" name="name" placeholder="Name" required />
+    <label>
+      <input type="checkbox" [(ngModel)]="newPublication.isActive" name="isActive" />
+      Is Active
+    </label>
+    <button type="submit">Add</button>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Is Active</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pub of publications">
+      <td>{{ pub.id }}</td>
+
+      <td *ngIf="!editingPublication || editingPublication.id !== pub.id">{{ pub.name }}</td>
+      <td *ngIf="editingPublication && editingPublication.id === pub.id">
+        <input [(ngModel)]="editingPublication.name" name="editName{{ pub.id }}" />
+      </td>
+
+      <td *ngIf="!editingPublication || editingPublication.id !== pub.id">{{ pub.isActive ? 'Yes' : 'No' }}</td>
+      <td *ngIf="editingPublication && editingPublication.id === pub.id">
+        <input type="checkbox" [(ngModel)]="editingPublication.isActive" name="editActive{{ pub.id }}" />
+      </td>
+
+      <td>
+        <button *ngIf="!editingPublication || editingPublication.id !== pub.id" (click)="editPublication(pub)">Edit</button>
+        <button *ngIf="editingPublication && editingPublication.id === pub.id" (click)="savePublication()">Save</button>
+        <button (click)="deletePublication(pub.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

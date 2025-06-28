@@ -1,0 +1,125 @@
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+
+    input, select {
+      flex: 1 1 150px;
+      padding: 10px 12px;
+      border: 1.8px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0,123,255,0.5);
+      }
+    }
+
+    button {
+      padding: 0 25px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+
+    thead {
+      background-color: #007bff;
+      color: white;
+
+      th {
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1rem;
+        border-bottom: 2px solid #0056b3;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:hover {
+          background-color: #f1f9ff;
+        }
+      }
+
+      td {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        color: #333;
+
+        input, select {
+          width: 100%;
+          padding: 6px 8px;
+          font-size: 0.95rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,123,255,0.4);
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    margin-right: 8px;
+    padding: 6px 14px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  button:nth-child(1) { background-color: #28a745; color: white; } /* Save */
+  button:nth-child(2) { background-color: #6c757d; color: white; } /* Cancel */
+  button:nth-child(3) { background-color: #dc3545; color: white; } /* Delete */
+}

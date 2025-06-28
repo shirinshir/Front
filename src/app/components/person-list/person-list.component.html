@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>People</h2>
+
+  <form (submit)="addPerson(); $event.preventDefault()">
+    <input type="text" [(ngModel)]="newPerson.name" name="name" placeholder="Name" required />
+    <input type="text" [(ngModel)]="newPerson.address" name="address" placeholder="Address" />
+    <input type="date" [(ngModel)]="newPerson.birthdate" name="birthdate" placeholder="Birthdate" />
+    <input type="email" [(ngModel)]="newPerson.email" name="email" placeholder="Email" />
+    <input type="password" [(ngModel)]="newPerson.password" name="password" placeholder="Password" />
+    <input type="text" [(ngModel)]="newPerson.phone" name="phone" placeholder="Phone" />
+
+    <select [(ngModel)]="newPerson.role" name="role" required>
+      <option value="" disabled selected>Выберите роль</option>
+      <option value="LIBRARIAN">Librarian</option>
+      <option value="AUTHOR">Author</option>
+      <option value="READER">Reader</option>
+    </select>
+
+    <button type="submit">Add</button>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Birthdate</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Phone</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of persons">
+      <td>{{ person.id }}</td>
+
+      <ng-container *ngIf="editingPerson?.id === person.id; else viewMode">
+        <ng-container *ngIf="editingPerson as p">
+          <td><input [(ngModel)]="p.name" /></td>
+          <td><input [(ngModel)]="p.address" /></td>
+          <td><input type="date" [(ngModel)]="p.birthdate" /></td>
+          <td><input [(ngModel)]="p.email" /></td>
+          <td><input type="password" [(ngModel)]="p.password" /></td>
+          <td><input [(ngModel)]="p.phone" /></td>
+
+          <td>
+            <select [(ngModel)]="p.role" name="role" required>
+              <option value="LIBRARIAN">Librarian</option>
+              <option value="AUTHOR">Author</option>
+              <option value="READER">Reader</option>
+            </select>
+          </td>
+
+          <td>
+            <button (click)="savePerson()">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+            <button (click)="deletePerson(p.id!)">Delete</button>
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #viewMode>
+        <td>{{ person.name }}</td>
+        <td>{{ person.address }}</td>
+        <td>{{ person.birthdate | date }}</td>
+        <td>{{ person.email }}</td>
+        <td>••••••••</td>
+        <td>{{ person.phone }}</td>
+        <td>{{ person.role }}</td>
+        <td>
+          <button (click)="editPerson(person)">Edit</button>
+          <button (click)="deletePerson(person.id!)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>
